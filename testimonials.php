@@ -29,11 +29,11 @@
      <section>
           <div class="container">
                <div class="text-center">
-                    <h1>Testimonials</h1>
+                    <h1>Görüşler</h1>
 
                     <br>
 
-                    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo, alias.</p>
+                    <p class="lead">Alanlarında uzman kullanıcılarımızın görüşleri</p>
                </div>
           </div>
      </section>
@@ -42,122 +42,41 @@
      <section id="testimonial" class="section-background">
           <div class="container">
                <div class="row">
-                    <div class="col-sm-4 col-xs-12">
-                         <div class="item">
-                              <div class="tst-image">
-                                   <img src="images/tst-image-1-200x216.jpg" class="img-responsive" alt="">
-                              </div>
-                              <div class="tst-author">
-                                   <h4>Jackson</h4>
-                                   <span>Shopify Developer</span>
-                              </div>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex assumenda culpa animi aspernatur provident at inventore aperiam itaque esse impedit.</p>
-                              <div class="tst-rating">
-                                   <i class="fa fa-star"></i>
-                                   <i class="fa fa-star"></i>
-                                   <i class="fa fa-star"></i>
-                                   <i class="fa fa-star"></i>
-                                   <i class="fa fa-star"></i>
-                              </div>
+                    
+                         <?php 
+                         require_once './components/connection.php';
+                         $test = $conn->prepare("SELECT names,title,images,comment,star FROM testimonials");
+                         $test->execute();
+                         $result = $test->fetchAll(PDO::FETCH_ASSOC);
+                         foreach ($result as $row){
+                              
+                              echo " <div class='col-sm-4 col-xs-12'><div class='item' style='max-height:250px;'>
+                         <div class='tst-image'>
+                              <img src='data:image/jpeg;base64,".base64_encode($row['images'])."' class='img-responsive'>
                          </div>
-                    </div>
+                         <div class='tst-author'>
+                              <h4>".$row['names']."</h4>
+                              <span>".$row['title']."</span>
+                         </div>
+                         <p> <div class='tst-rating'>".$row['comment']."</p> ";
+                         for ($x = 0; $x < $row['star']; $x++) {
+                              echo " <i class='fa fa-star'></i>   
+                              ";
+                            }
+                            echo " </div> </div> </div>";
+                         
+                         }
 
-                    <div class="col-sm-4 col-xs-12">
-                         <div class="item">
-                              <div class="tst-image">
-                                   <img src="images/tst-image-2-200x216.jpg" class="img-responsive" alt="">
-                              </div>
-                              <div class="tst-author">
-                                   <h4>Camila</h4>
-                                   <span>Marketing Manager</span>
-                              </div>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dolores placeat nisi ab nobis soluta tempora minus laudantium adipisci, ex fugiat nemo culpa minima unde? Itaque delectus, alias possimus fugiat.</p>
-                              <div class="tst-rating">
-                                   <i class="fa fa-star"></i>
-                                   <i class="fa fa-star"></i>
-                                   <i class="fa fa-star"></i>
-                              </div>
-                         </div>
-                    </div>
-
-                    <div class="col-sm-4 col-xs-12">
-                         <div class="item">
-                              <div class="tst-image">
-                                   <img src="images/tst-image-3-200x216.jpg" class="img-responsive" alt="">
-                              </div>
-                              <div class="tst-author">
-                                   <h4>Barbie</h4>
-                                   <span>Art Director</span>
-                              </div>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt ea nihil accusamus mollitia officia tempora, sapiente explicabo, molestiae officiis blanditiis consectetur nostrum! Repellat maiores, perspiciatis repudiandae nostrum eaque dolores distinctio id est natus, quibusdam quaerat.</p>
-                              <div class="tst-rating">
-                                   <i class="fa fa-star"></i>
-                                   <i class="fa fa-star"></i>
-                                   <i class="fa fa-star"></i>
-                                   <i class="fa fa-star"></i>
-                              </div>
-                         </div>
-                    </div>
+                         
+                         
+               
+                    
+                         ?>
+                    
                </div>
                
-               <div class="row">
-                    <div class="col-sm-4 col-xs-12">
-                         <div class="item">
-                              <div class="tst-image">
-                                   <img src="images/tst-image-1-200x216.jpg" class="img-responsive" alt="">
-                              </div>
-                              <div class="tst-author">
-                                   <h4>Jackson</h4>
-                                   <span>Shopify Developer</span>
-                              </div>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex assumenda culpa animi aspernatur provident at inventore aperiam itaque esse impedit.</p>
-                              <div class="tst-rating">
-                                   <i class="fa fa-star"></i>
-                                   <i class="fa fa-star"></i>
-                                   <i class="fa fa-star"></i>
-                                   <i class="fa fa-star"></i>
-                                   <i class="fa fa-star"></i>
-                              </div>
-                         </div>
-                    </div>
-
-                    <div class="col-sm-4 col-xs-12">
-                         <div class="item">
-                              <div class="tst-image">
-                                   <img src="images/tst-image-2-200x216.jpg" class="img-responsive" alt="">
-                              </div>
-                              <div class="tst-author">
-                                   <h4>Camila</h4>
-                                   <span>Marketing Manager</span>
-                              </div>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dolores placeat nisi ab nobis soluta tempora minus laudantium adipisci, ex fugiat nemo culpa minima unde? Itaque delectus, alias possimus fugiat.</p>
-                              <div class="tst-rating">
-                                   <i class="fa fa-star"></i>
-                                   <i class="fa fa-star"></i>
-                                   <i class="fa fa-star"></i>
-                              </div>
-                         </div>
-                    </div>
-
-                    <div class="col-sm-4 col-xs-12">
-                         <div class="item">
-                              <div class="tst-image">
-                                   <img src="images/tst-image-3-200x216.jpg" class="img-responsive" alt="">
-                              </div>
-                              <div class="tst-author">
-                                   <h4>Barbie</h4>
-                                   <span>Art Director</span>
-                              </div>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt ea nihil accusamus mollitia officia tempora, sapiente explicabo, molestiae officiis blanditiis consectetur nostrum! Repellat maiores, perspiciatis repudiandae nostrum eaque dolores distinctio id est natus, quibusdam quaerat.</p>
-                              <div class="tst-rating">
-                                   <i class="fa fa-star"></i>
-                                   <i class="fa fa-star"></i>
-                                   <i class="fa fa-star"></i>
-                                   <i class="fa fa-star"></i>
-                              </div>
-                         </div>
-                    </div>
-               </div>
+               
+               
           </div>
      </section> 
 

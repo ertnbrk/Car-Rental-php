@@ -24,6 +24,7 @@
 
 <?php 
      require_once './components/navbar.php';
+     
      ?>
 
      <!-- HOME -->
@@ -80,7 +81,7 @@
                                    <br>
 
                                    <p class="lead">Özel araçlardan kargo kamyonetlerine kadar geniş bir yelpazede kiralama seçenekleri sunuyoruz.Prestijli kiralık arabalarımızdan biriyle şık bir şekilde gelin. Dünyanın önde gelen üreticilerinden özel, lüks ve sportif kiralık araç yelpazemizi keşfedin.</p>
-                                   <a href="offers.html" class="section-btn btn btn-primary btn-block">Daha fazla öğren</a>
+                                   <a href="about-us.php" class="section-btn btn btn-primary btn-block">Daha fazla öğren</a>
                               </div>
                          </div>
                     </div>

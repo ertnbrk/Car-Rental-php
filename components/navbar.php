@@ -47,13 +47,15 @@ session_start();
                          
                               <?php 
                                    
-                                   if (isset($_SESSION['user'])){
+                                   
+                                   if (isset($_SESSION['admin'])){
+                                        echo '<li><a href="admin.php" class="login">Admin</a></li>'; 
+                                        echo '<li><a href="logout.php" class="register">Çıkş</a></li>';     
+                                        }
+                                   else if (isset($_SESSION['user'])){
                                         echo '<li><a href="logout.php" class="register">Çıkş</a></li>';
                                         
                                    }
-                                   if (isset($_SESSION['admin'])){
-                                        echo '<li><a href="admin.php" class="login">Admin</a></li>';      
-                                        }
                                    else {
                                         echo '<li><a href="register.php" class="register">Kayıt Ol</a></li>
                                         <li><a href="login.php" class="login">Giriş</a></li>';

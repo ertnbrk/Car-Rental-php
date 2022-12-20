@@ -25,7 +25,18 @@
 <?php 
      require_once './components/navbar.php';
      require_once './components/connection.php';
-   
+     $kur = simplexml_load_file("https://www.tcmb.gov.tr/kurlar/today.xml");
+     foreach ($kur -> Currency as $cur) {
+          if ($cur["Kod"] == "USD") {
+               $usdAlis  = $cur -> ForexBuying;
+               $usdSatis = $cur -> ForexSelling;
+          }
+          
+          if ($cur["Kod"] == "EUR") {
+               $eurAlis  = $cur -> ForexBuying;
+               $eurSatis = $cur -> ForexSelling;
+          }
+     }
    $cars = $conn->prepare("SELECT * FROM cars");
      $cars->execute();
      $result = $cars->fetchAll(PDO::FETCH_ASSOC);
@@ -39,7 +50,33 @@
                     <br>
 
                     <p class="lead">Her ihtiyacın için binlerce aracımızla hizmetinizdeyiz</p>
+                    <br>
+                    
                </div>
+               <table class="table table-dark">
+  <thead>
+    <tr class= "bg-success">
+      <th scope="col">Doviz</th>
+      <th scope="col">Alış</th>
+      <th scope="col">Satış</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="bg-primary">
+      <th scope="row">USD</th>
+      <td><?php echo $usdAlis ?></td>
+      <td><?php echo $usdSatis ?></td>
+      
+    </tr>
+    <tr class="bg-info">
+      <th scope="row">EUR</th>
+      <td><?php echo $eurAlis ?></td>
+      <td><?php echo $usdAlis ?></td>
+      
+    </tr>
+    
+  </tbody>
+</table>
           </div>
      </section>
 

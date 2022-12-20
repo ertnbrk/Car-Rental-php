@@ -29,7 +29,7 @@
      <section>
           <div class="container">
                <div class="text-center">
-                    <h1 name="joinUs">Join Us</h1>
+                    <h1 name="joinUs">Kayıt ol</h1>
 
                     <br>
 
@@ -68,9 +68,20 @@
                               </div>
                               
                               <div class="row">
-                                   <div class="col-md-12">
+                                   <div class="col-md-6">
+                                        <div class="col-md-6">
+                                             <label class="form-control"><h5><a href=""><u>Açık Rıza</u></a>, <a href=""><u>Aydınlatma Metni</u></a> ve <a href=""> <u>Kiralama Sözleşmesini</u></a> Kabul Ediyorum </h5></label>
+                                        </div>
+                                        <div class="col-md-6">
+                                        <br><input type="checkbox" class="form-control" style="width:50px;height:30px;" name="sozlesme" required>
+                                        </div>
+                                        
+                                        
+                                   </div>
+                                   <div class="col-md-6">
                                         <input type="submit" style="background-color:#29ca8e;font-weight: bold; border-radius: 15px; color:white;" class="form-control" value="Kaydol" name="kaydet" required>
                                    </div>
+                              </div>
                          </form>
                     </div>
 
@@ -78,7 +89,11 @@
           </div>
      </section>
      <?php
+     
      if(isset ($_POST["kaydet"])){
+     
+          
+       
      require_once './components/connection.php';
      $name = $_POST['ad'];
      $soyad = $_POST['soyad'];
@@ -95,6 +110,9 @@
 
      echo'<meta http-equiv="refresh" content="0;URL=index.php">';     //! Header çalışmadı
      }
+     
+     
+     
      ?>
      <?php
    require_once './components/footer.php';
