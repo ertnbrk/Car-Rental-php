@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-     <title>PHPJabber | Car Rental Website Template</title>
+     <title>Ertan Rent a Car</title>
 
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -29,17 +29,18 @@
      <section>
           <div class="container">
                <div class="text-center">
-                    <h1>Contact Us</h1>
+                    <h1>Bizimle İletişime geç</h1>
 
                     <br>
 
-                    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo, alias.</p>
+                    <p class="lead">Şikayet,öneri,memnuniyet,danışma ve Takıma katılmak için bizimle iletişime geç</p>
                </div>
           </div>
      </section>
 
 
      <?php
+     require_once './components/contactpackage.php';
    require_once './components/footer.php';
    
    ?>

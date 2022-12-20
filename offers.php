@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-     <title>PHPJabber | Car Rental Website Template</title>
+     <title>Ertan Rent a Car</title>
 
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -28,11 +28,11 @@
      <section>
           <div class="container">
                <div class="text-center">
-                    <h1>Offers</h1>
+                    <h1>Teklifler ve Fırsatlar</h1>
 
                     <br>
 
-                    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo, alias.</p>
+                    <p class="lead">En cazip teklfiler için takipte kalınız.</p>
                </div>
           </div>
      </section>
@@ -155,39 +155,41 @@
                          <form action="#" id="contact-form">
                               <div class="row">
                                    <div class="col-md-6">
-                                        <input type="text" class="form-control" placeholder="Pick-up location" required>
+                                        <input type="text" class="form-control"
+                                        name='alinacak' placeholder="Teslim edilecek yer" required>
                                    </div>
 
                                    <div class="col-md-6">
-                                        <input type="text" class="form-control" placeholder="Return location" required>
+                                        <input type="text" name='verilecek' class="form-control" placeholder="Geri teslim yapılacak yer" required>
                                    </div>
                               </div>
 
                               <div class="row">
                                    <div class="col-md-6">
-                                        <input type="text" class="form-control" placeholder="Pick-up date/time" required>
+                                        <input type="text" class="form-control" name='alinacak_tarih' placeholder="Alınacak tarih/saat" required>
                                    </div>
 
                                    <div class="col-md-6">
-                                        <input type="text" class="form-control" placeholder="Return date/time" required>
+                                        <input type="text" name= 'verilecek_tarih'class="form-control" placeholder="Geri Verilecek tarih/saat" required>
                                    </div>
                               </div>
-                              <input type="text" class="form-control" placeholder="Enter full name" required>
+                              <input type="text" class="form-control" placeholder="İsim Soyisim" name='fullname' required>
 
                               <div class="row">
                                    <div class="col-md-6">
-                                        <input type="text" class="form-control" placeholder="Enter email address" required>
+                                        <input type="text" class="form-control" placeholder="Email gir" name='email' required>
                                    </div>
 
                                    <div class="col-md-6">
-                                        <input type="text" class="form-control" placeholder="Enter phone" required>
+                                        <input type="text" class="form-control" name='tel' placeholder="Enter phone" required>
                                    </div>
                               </div>
                          </form>
                     </div>
-
+                    
+               
                     <div class="modal-footer">
-                         <button type="button" class="section-btn btn btn-primary">Book Now</button>
+                         <button type="button" class="section-btn btn btn-primary" name='mybt'>Rezerve et</button>
                     </div>
                </div>
           </div>

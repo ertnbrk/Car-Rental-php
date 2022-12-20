@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-     <title>PHPJabber | Car Rental Website Template</title>
+     <title>Ertan Rent a Car</title>
 
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -79,7 +79,7 @@
      </section>
      <?php
      if(isset ($_POST["kaydet"])){
-     include("./components/connection.php");
+     require_once './components/connection.php';
      $name = $_POST['ad'];
      $soyad = $_POST['soyad'];
      $tc = $_POST['tcno'];
@@ -88,6 +88,11 @@
      $telno = $_POST['tel'];
      $sifre = $_POST['sifre'];
      $conn->prepare("INSERT INTO üye (üyeTc,üyeAd,üyeSoyad,üyeTelefon,üyeAdres,üyeMail,üyeSifre) VALUES(?,?,?,?,?,?,?)")->execute([$tc,$name,$soyad,$telno,$adres,$email,$sifre]);
+     
+     $_SESSION['user'] = $tc;
+     $_SESSION['password'] = $sifre;
+
+
      echo'<meta http-equiv="refresh" content="0;URL=index.php">';     //! Header çalışmadı
      }
      ?>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-     <title>PHPJabber | Car Rental Website Template</title>
+     <title>Ertan Rent a Car</title>
 
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -34,8 +34,8 @@
                          <div class="caption">
                               <div class="container">
                                    <div class="col-md-6 col-sm-12">
-                                        <h1>Lorem ipsum dolor sit amet.</h1>
-                                        <h3>Voluptas dignissimos esse, explicabo cum fugit eaque, perspiciatis quia ab nisi sapiente delectus eiet.</h3>
+                                        <h1>Harika açık havayı fethetmek için mükemmel arabayı bulun!</h1>
+                                        <h3>Kış yollarında kolaylıkla ilerlemek için sağlam bir 4x4 veya sizi tatil köylerine görütürecek bir karavana binin.</h3>
                                         <a href="fleet.php" class="section-btn btn btn-default">Fleet</a>
                                    </div>
                               </div>
@@ -46,8 +46,8 @@
                          <div class="caption">
                               <div class="container">
                                    <div class="col-md-6 col-sm-12">
-                                        <h1>Distinctio explicabo vero animi culpa facere voluptatem.</h1>
-                                        <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo, excepturi.</h3>
+                                   <h1>Harika açık havayı fethetmek için mükemmel arabayı bulun!</h1>
+                                        <h3>Kış yollarında kolaylıkla ilerlemek için sağlam bir 4x4 veya sizi tatil köylerine görütürecek bir karavana binin.</h3>
                                         <a href="fleet.php" class="section-btn btn btn-default">Fleet</a>
                                    </div>
                               </div>
@@ -58,8 +58,8 @@
                          <div class="caption">
                               <div class="container">
                                    <div class="col-md-6 col-sm-12">
-                                        <h1>Efficient Learning Methods</h1>
-                                        <h3>Nam eget sapien vel nibh euismod vulputate in vel nibh. Quisque eu ex eu urna venenatis sollicitudin ut at libero.</h3>
+                                   <h1>Harika açık havayı fethetmek için mükemmel arabayı bulun!</h1>
+                                        <h3>Kış yollarında kolaylıkla ilerlemek için sağlam bir 4x4 veya sizi tatil köylerine görütürecek bir karavana binin.</h3>
                                         <a href="fleet.php" class="section-btn btn btn-default">Fleet</a>
                                    </div>
                               </div>
@@ -75,11 +75,12 @@
                     <div class="row">
                          <div class="col-md-12 col-sm-12">
                               <div class="text-center">
-                                   <h2>About us</h2>
+                                   <h2>Hakkımızda</h2>
 
                                    <br>
 
-                                   <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore molestias ipsa veritatis nihil iusto maiores natus dolor, a reiciendis corporis obcaecati ex. Totam assumenda impedit aut eum, illum distinctio saepe explicabo. Consequuntur molestiae similique id quos, quasi quas perferendis laboriosam, fugit natus odit totam! Id dolores saepe, sint debitis rerum dolorem tempora aliquid, pariatur enim nisi. Quia ab iusto assumenda.</p>
+                                   <p class="lead">Özel araçlardan kargo kamyonetlerine kadar geniş bir yelpazede kiralama seçenekleri sunuyoruz.Prestijli kiralık arabalarımızdan biriyle şık bir şekilde gelin. Dünyanın önde gelen üreticilerinden özel, lüks ve sportif kiralık araç yelpazemizi keşfedin.</p>
+                                   <a href="offers.html" class="section-btn btn btn-primary btn-block">Daha fazla öğren</a>
                               </div>
                          </div>
                     </div>
@@ -91,7 +92,7 @@
                     <div class="row">
                          <div class="col-md-12 col-sm-12">
                               <div class="section-title text-center">
-                                   <h2>Offers <small>Lorem ipsum dolor sit amet.</small></h2>
+                                   <h2>Teklifler <small>Dudak uçuklatan tekliflerimiz</small></h2>
                               </div>
                          </div>
 
@@ -101,14 +102,14 @@
                                         <img src="images/offer-1-720x480.jpg" class="img-responsive" alt="">
                                    </div>
                                    <div class="team-info">
-                                        <h3>FAMILY CARS</h3>
+                                        <h3>Aile Arabalarımız</h3>
 
-                                        <p class="lead"><small>from</small> <strong>$120</strong> <small>per weekend</small></p>
+                                        <p class="lead"> <strong>$120</strong> <small>Günlük</small></p>
 
-                                        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dicta voluptas quia dolor fuga odit.</span>
+                                        <span>Aile ile gezintiye çıkmak için ideal araçlarımız...</span>
                                    </div>
                                    <div class="team-thumb-actions">
-                                        <a href="offers.html" class="section-btn btn btn-primary btn-block">View Offer</a>
+                                        <a href="offers.php" class="section-btn btn btn-primary btn-block">Teklifleri Gör</a>
                                    </div>
                               </div>
                          </div>
@@ -119,14 +120,15 @@
                                         <img src="images/offer-2-720x480.jpg" class="img-responsive" alt="">
                                    </div>
                                    <div class="team-info">
-                                        <h3>LUXURY & PRESTIGE CARS</h3>
+                                        <h3>LÜKS & PRESTİJ ARABALAR
+</h3>
 
-                                        <p class="lead"><small>from</small> <strong>$99</strong> <small>per weekend</small></p>
+                                        <p class="lead"> <strong>$99</strong> <small>Günlük</small></p>
 
-                                        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non beatae soluta, placeat vitae cum maxime culpa itaque minima.</span>
+                                        <span>Lüks ve ortamlık bir araç arıyorsanız doğru yerdesiniz...</span>
                                    </div>
                                    <div class="team-thumb-actions">
-                                        <a href="offers.html" class="section-btn btn btn-primary btn-block">View Offer</a>
+                                        <a href="offers.php" class="section-btn btn btn-primary btn-block">Teklifleri Gör</a>
                                    </div>
                               </div>
                          </div>
@@ -137,107 +139,30 @@
                                         <img src="images/offer-3-720x480.jpg" class="img-responsive" alt="">
                                    </div>
                                    <div class="team-info">
-                                        <h3>TOP SELLERS</h3>
+                                        <h3>Çok Satanlar</h3>
 
-                                        <p class="lead"><small>from</small> <strong>$110</strong> <small>per weekend</small></p>
+                                        <p class="lead"><strong>$110</strong> <small>Günlük</small></p>
 
-                                        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt nisi quia aspernatur, harum facere delectus saepe enim?</span>
+                                        <span></span>
                                    </div>
                                    <div class="team-thumb-actions">
-                                        <a href="offers.html" class="section-btn btn btn-primary btn-block">View Offer</a>
+                                        <a href="offers.php" class="section-btn btn btn-primary btn-block">Teklifleri Gör</a>
                                    </div>
                               </div>
                          </div>
                     </div>
                </div>
           </section>
-          <section>
-               <div class="container">
-                    <div class="row">
-                         <div class="col-md-12 col-sm-12">
-                              <div class="section-title text-center">
-                                   <h2>Latest Blog posts <small>Lorem ipsum dolor sit amet.</small></h2>
-                              </div>
-                         </div>
-
-                         <div class="col-md-4 col-sm-4">
-                              <div class="courses-thumb courses-thumb-secondary">
-                                   <div class="courses-top">
-                                        <div class="courses-image">
-                                             <img src="images/blog-1-720x480.jpg" class="img-responsive" alt="">
-                                        </div>
-                                        <div class="courses-date">
-                                             <span title="Author"><i class="fa fa-user"></i> John Doe</span>
-                                             <span title="Date"><i class="fa fa-calendar"></i> 12/06/2020 10:30</span>
-                                             <span title="Views"><i class="fa fa-eye"></i> 114</span>
-                                        </div>
-                                   </div>
-
-                                   <div class="courses-detail">
-                                        <h3><a href="blog-post-details.html">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a></h3>
-                                   </div>
-
-                                   <div class="courses-info">
-                                        <a href="blog-post-details.html" class="section-btn btn btn-primary btn-block">Read More</a>
-                                   </div>
-                              </div>
-                         </div>
-
-                         <div class="col-md-4 col-sm-4">
-                              <div class="courses-thumb courses-thumb-secondary">
-                                   <div class="courses-top">
-                                        <div class="courses-image">
-                                             <img src="images/blog-2-720x480.jpg" class="img-responsive" alt="">
-                                        </div>
-                                        <div class="courses-date">
-                                             <span title="Author"><i class="fa fa-user"></i> John Doe</span>
-                                             <span title="Date"><i class="fa fa-calendar"></i> 12/06/2020 10:30</span>
-                                             <span title="Views"><i class="fa fa-eye"></i> 114</span>
-                                        </div>
-                                   </div>
-
-                                   <div class="courses-detail">
-                                        <h3><a href="blog-post-details.html">Tempora molestiae, iste, consequatur unde sint praesentium!</a></h3>
-                                   </div>
-
-                                   <div class="courses-info">
-                                        <a href="blog-post-details.html" class="section-btn btn btn-primary btn-block">Read More</a>
-                                   </div>
-                              </div>
-                         </div>
-
-                         <div class="col-md-4 col-sm-4">
-                              <div class="courses-thumb courses-thumb-secondary">
-                                   <div class="courses-top">
-                                        <div class="courses-image">
-                                             <img src="images/blog-3-720x480.jpg" class="img-responsive" alt="">
-                                        </div>
-                                        <div class="courses-date">
-                                             <span title="Author"><i class="fa fa-user"></i> John Doe</span>
-                                             <span title="Date"><i class="fa fa-calendar"></i> 12/06/2020 10:30</span>
-                                             <span title="Views"><i class="fa fa-eye"></i> 114</span>
-                                        </div>
-                                   </div>
-
-                                   <div class="courses-detail">
-                                        <h3><a href="blog-post-details.html">A voluptas ratione, error provident distinctio, eaque id officia?</a></h3>
-                                   </div>
-
-                                   <div class="courses-info">
-                                        <a href="blog-post-details.html" class="section-btn btn btn-primary btn-block">Read More</a>
-                                   </div>
-                              </div>
-                         </div>
-                    </div>
-               </div>
-          </section>
+          
+               
+                    
           <section id="testimonial">
                <div class="container">
                     <div class="row">
 
                          <div class="col-md-12 col-sm-12">
                               <div class="section-title text-center">
-                                   <h2>Testimonials <small>from around the world</small></h2>
+                                   <h2>Görüşler <small>Ülkemizin her bir köşesinden</small></h2>
                               </div>
 
                               <div class="owl-carousel owl-theme owl-client">

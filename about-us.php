@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-     <title>PHPJabber | Car Rental Website Template</title>
+     <title>Ertan Rent a Car</title>
 
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -22,56 +22,9 @@
 </head>
 <body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
 
-     <!-- PRE LOADER -->
-     <section class="preloader">
-          <div class="spinner">
-
-               <span class="spinner-rotate"></span>
-               
-          </div>
-     </section>
-
-
-     <!-- MENU -->
-     <section class="navbar custom-navbar navbar-fixed-top" role="navigation">
-          <div class="container">
-
-               <div class="navbar-header">
-                    <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                         <span class="icon icon-bar"></span>
-                         <span class="icon icon-bar"></span>
-                         <span class="icon icon-bar"></span>
-                    </button>
-
-                    <!-- lOGO TEXT HERE -->
-                    <a href="#" class="navbar-brand">Car Rental Website</a>
-               </div>
-
-               <!-- MENU LINKS -->
-               <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-nav-first">
-                         <li><a href="index.php">Home</a></li>
-                         <li><a href="fleet.php">Fleet</a></li>
-                         <li><a href="offers.phph">Offers</a></li>
-                         <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About<span class="caret"></span></a>
-                              
-                              <ul class="dropdown-menu">
-                                   <li><a href="blog-posts.php">Blog</a></li>
-                                   <li class="active"><a href="about-us.php">About Us</a></li>
-                                   <li><a href="team.php">Team</a></li>
-                                   <li><a href="testimonials.php">Testimonials</a></li>
-                                   <li><a href="terms.php">Terms</a></li>
-                              </ul>
-                         </li>
-                         <li><a href="contact.php">Contact Us</a></li>
-                         <li><a href="" class="register">Register</a></li>
-                         <li><a href="" class="login">Login</a></li>
-                    </ul>
-               </div>
-
-          </div>
-     </section>
+     <?php 
+     require_once './components/navbar.php';
+     ?>
 
      <section>
           <div class="container">

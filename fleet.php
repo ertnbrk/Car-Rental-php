@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-     <title>PHPJabber | Car Rental Website Template</title>
+     <title>Ertan Rent a Car</title>
 
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -24,16 +24,21 @@
 
 <?php 
      require_once './components/navbar.php';
+     require_once './components/connection.php';
+   
+   $cars = $conn->prepare("SELECT * FROM cars");
+     $cars->execute();
+     $result = $cars->fetchAll(PDO::FETCH_ASSOC);
      ?>
 
      <section>
           <div class="container">
                <div class="text-center">
-                    <h1>Fleet</h1>
+                    <h1>Garaj</h1>
 
                     <br>
 
-                    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo, alias.</p>
+                    <p class="lead">Her ihtiyacın için binlerce aracımızla hizmetinizdeyiz</p>
                </div>
           </div>
      </section>
@@ -41,166 +46,48 @@
      <section class="section-background">
           <div class="container">
                <div class="row">
-                    <div class="col-md-4 col-sm-4">
-                         <div class="courses-thumb courses-thumb-secondary">
-                              <div class="courses-top">
-                                   <div class="courses-image">
-                                        <img src="images/product-1-720x480.jpg" class="img-responsive" alt="">
+                    <?php
+                    $sayi = count($result) -1;
+                    
+                    while($sayi>0){
+                         echo "<div class='col-md-4 col-sm-4'>
+                         <div class='courses-thumb courses-thumb-secondary'>
+                              <div class='courses-top'>
+                                   <div class='courses-image'>
+                                   <img src='data:image/jpeg;base64,".base64_encode($result[$sayi]['image'])."' class='img-responsive'>
                                    </div>
-                                   <div class="courses-date">
-                                        <span title="passegengers"><i class="fa fa-user"></i> 5</span>
-                                        <span title="luggages"><i class="fa fa-briefcase"></i> 4</span>
-                                        <span title="doors"><i class="fa fa-sign-out"></i> 4</span>
-                                        <span title="transmission"><i class="fa fa-cog"></i> A</span>
+                                   <div class=\"courses-date\">
+                                   <span title=\"passegengers\"><i class=\"fa fa-user\"></i> ".$result[$sayi]['capacity']."</span>
+                                        <span title=\"luggages\"><i class=\"fa fa-briefcase\"></i> ".$result[$sayi]['Bagaj']."</span>
+                                        <span title=\"doors\"><i class=\"fa fa-sign-out\"></i> ".$result[$sayi]['Kapı']."</span>
+                                        <span title=\"transmission\"><i class=\"fa fa-cog\"></i> ".$result[$sayi]['Vites']."</span>
                                    </div>
                               </div>
-
-                              <div class="courses-detail">
-                                   <h3><a href="fleet.php">Large: Premium</a></h3>
-                                   <p class="lead"><small>from</small> <strong>$99</strong> <small>per weekend</small></p>
-                                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+               
+                              <div class=\"courses-detail\">
+                                   <h3><a href=\"fleet.php\">".$result[$sayi]['name']."</a></h3>
+                                   <p class=\"lead\"><small>from</small> <strong>$".$result[$sayi]['Fiyat']."</strong> <small>per weekend</small></p>
+                                   
                               </div>
-
-                              <div class="courses-info">
-                                   <button type="button" data-toggle="modal" data-target=".bs-example-modal" class="section-btn btn btn-primary btn-block">Book Now</button>
+               
+                              <div class=\"courses-info\">
+                              <form method=\"get\">
+                                   <button type=\"button\" data-toggle=\"modal\" data-target=\".bs-example-modal\" class=\"section-btn btn btn-primary btn-block\" name='small'>Rezervasyon Yap</button>
+                                   </form>
                               </div>
                          </div>
                     </div>
-
-                    <div class="col-md-4 col-sm-4">
-                         <div class="courses-thumb courses-thumb-secondary">
-                              <div class="courses-top">
-                                   <div class="courses-image">
-                                        <img src="images/product-2-720x480.jpg" class="img-responsive" alt="">
-                                   </div>
-                                   <div class="courses-date">
-                                        <span title="passegengers"><i class="fa fa-user"></i> 5</span>
-                                        <span title="luggages"><i class="fa fa-briefcase"></i> 4</span>
-                                        <span title="doors"><i class="fa fa-sign-out"></i> 4</span>
-                                        <span title="transmission"><i class="fa fa-cog"></i> A</span>
-                                   </div>
-                              </div>
-
-                              <div class="courses-detail">
-                                   <h3><a href="fleet.php">Large: Station wagon</a></h3>
-                                   <p class="lead"><small>from</small> <strong>$99</strong> <small>per weekend</small></p>
-                                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                              </div>
-
-                              <div class="courses-info">
-                                   <button type="button" data-toggle="modal" data-target=".bs-example-modal" class="section-btn btn btn-primary btn-block">Book Now</button>
-                              </div>
-                         </div>
+                    
+                    ";
+                    $sayi-=1;
+                    }
+                    echo "</div>
                     </div>
-
-                    <div class="col-md-4 col-sm-4">
-                         <div class="courses-thumb courses-thumb-secondary">
-                              <div class="courses-top">
-                                   <div class="courses-image">
-                                        <img src="images/product-3-720x480.jpg" class="img-responsive" alt="">
-                                   </div>
-                                   <div class="courses-date">
-                                        <span title="passegengers"><i class="fa fa-user"></i> 5</span>
-                                        <span title="luggages"><i class="fa fa-briefcase"></i> 4</span>
-                                        <span title="doors"><i class="fa fa-sign-out"></i> 4</span>
-                                        <span title="transmission"><i class="fa fa-cog"></i> A</span>
-                                   </div>
-                              </div>
-
-                              <div class="courses-detail">
-                                   <h3><a href="fleet.php">Medium: Low emission</a></h3>
-                                   <p class="lead"><small>from</small> <strong>$99</strong> <small>per weekend</small></p>
-                                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                              </div>
-
-                              <div class="courses-info">
-                                   <button type="button" data-toggle="modal" data-target=".bs-example-modal" class="section-btn btn btn-primary btn-block">Book Now</button>
-                              </div>
-                         </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-4">
-                         <div class="courses-thumb courses-thumb-secondary">
-                              <div class="courses-top">
-                                   <div class="courses-image">
-                                        <img src="images/product-4-720x480.jpg" class="img-responsive" alt="">
-                                   </div>
-                                   <div class="courses-date">
-                                        <span title="passegengers"><i class="fa fa-user"></i> 4</span>
-                                        <span title="luggages"><i class="fa fa-briefcase"></i> 4</span>
-                                        <span title="doors"><i class="fa fa-sign-out"></i> 4</span>
-                                        <span title="transmission"><i class="fa fa-cog"></i> A</span>
-                                   </div>
-                              </div>
-
-                              <div class="courses-detail">
-                                   <h3><a href="fleet.php">Small: Economy</a></h3>
-                                   <p class="lead"><small>from</small> <strong>$99</strong> <small>per weekend</small></p>
-                                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                              </div>
-
-                              <div class="courses-info">
-                                   <button type="button" data-toggle="modal" data-target=".bs-example-modal" class="section-btn btn btn-primary btn-block">Book Now</button>
-                              </div>
-                         </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-4">
-                         <div class="courses-thumb courses-thumb-secondary">
-                              <div class="courses-top">
-                                   <div class="courses-image">
-                                        <img src="images/product-5-720x480.jpg" class="img-responsive" alt="">
-                                   </div>
-                                   <div class="courses-date">
-                                        <span title="passegengers"><i class="fa fa-user"></i> 2</span>
-                                        <span title="luggages"><i class="fa fa-briefcase"></i> 2</span>
-                                        <span title="doors"><i class="fa fa-sign-out"></i> 2</span>
-                                        <span title="transmission"><i class="fa fa-cog"></i> M</span>
-                                   </div>
-                              </div>
-
-                              <div class="courses-detail">
-                                   <h3><a href="fleet.php">Small: Mini</a></h3>
-                                   <p class="lead"><small>from</small> <strong>$99</strong> <small>per weekend</small></p>
-                                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                              </div>
-
-                              <div class="courses-info">
-                                   <button type="button" data-toggle="modal" data-target=".bs-example-modal" class="section-btn btn btn-primary btn-block">Book Now</button>
-                              </div>
-                         </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-4">
-                         <div class="courses-thumb courses-thumb-secondary">
-                              <div class="courses-top">
-                                   <div class="courses-image">
-                                        <img src="images/product-6-720x480.jpg" class="img-responsive" alt="">
-                                   </div>
-                                   <div class="courses-date">
-                                        <span title="passegengers"><i class="fa fa-user"></i> 5</span>
-                                        <span title="luggages"><i class="fa fa-briefcase"></i> 4</span>
-                                        <span title="doors"><i class="fa fa-sign-out"></i> 4</span>
-                                        <span title="transmission"><i class="fa fa-cog"></i> A</span>
-                                   </div>
-                              </div>
-
-                              <div class="courses-detail">
-                                   <h3><a href="fleet.php">Large: Premium</a></h3>
-                                   <p class="lead"><small>from</small> <strong>$99</strong> <small>per weekend</small></p>
-                                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                              </div>
-
-                              <div class="courses-info">
-                                   <button type="button" data-toggle="modal" data-target=".bs-example-modal" class="section-btn btn btn-primary btn-block">Book Now</button>
-                              </div>
-                         </div>
-                    </div>
-               </div>
-          </div>
-     </section>
-
+               </section>";
+                    
+?>
      <?php
+     
    require_once './components/footer.php';
    
    ?>
@@ -210,47 +97,87 @@
                <div class="modal-content">
                     <div class="modal-header">
                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                         <h4 class="modal-title" id="gridSystemModalLabel">Book Now</h4>
+                         <h4 class="modal-title" id="gridSystemModalLabel">Rezervasyon Yap</h4>
                     </div>
                     
                     <div class="modal-body">
-                         <form action="#" id="contact-form">
+                         <form action="#" id="contact-form" method = 'post'>
                               <div class="row">
                                    <div class="col-md-6">
-                                        <input type="text" class="form-control" placeholder="Pick-up location" required>
+                                        <input type="text" class="form-control" placeholder="Teslim Edilecek yer" required name='vloc'>
                                    </div>
 
                                    <div class="col-md-6">
-                                        <input type="text" class="form-control" placeholder="Return location" required>
+                                        <input type="text" class="form-control" placeholder="Geri Teslim Yapılacak Yer" required name='rloc'>
+                                   </div>
+                              </div>
+                              <div class="row">
+                                   <div class="col-md-6">
+                                        <label><h6>Teslim Alınacak Tarih ↓</h6></label>
+                                   </div>
+                                   <div class="col-md-6">
+                                   <label><h6> Geri Teslim Edilecek Tarih ↓</h6></label>
+
                                    </div>
                               </div>
 
                               <div class="row">
                                    <div class="col-md-6">
-                                        <input type="text" class="form-control" placeholder="Pick-up date/time" required>
+                                        <input type="date" class="form-control" placeholder="Alınacak Tarih" required name='vdate'>
                                    </div>
 
                                    <div class="col-md-6">
-                                        <input type="text" class="form-control" placeholder="Return date/time" required>
+                                        <input type="date" class="form-control" placeholder="Geri Teslim edilecek tarih" required name='rdate'>
                                    </div>
                               </div>
-                              <input type="text" class="form-control" placeholder="Enter full name" required>
-
                               <div class="row">
                                    <div class="col-md-6">
-                                        <input type="text" class="form-control" placeholder="Enter email address" required>
+                              <input type="text" class="form-control" placeholder="İsim Soyisim" required name='isim'>
+                                   </div>
+                                   <div class="col-md-6">
+                                   <input type="text" class="form-control" placeholder="Tc Kimlik Numarası" required name='tc'>
+                                   </div>
+                              </div>
+                              <div class="row">
+                                   <div class="col-md-6">
+                                        <input type="text" class="form-control" placeholder="Mail adresi gir" required name='mail'>
                                    </div>
 
                                    <div class="col-md-6">
-                                        <input type="text" class="form-control" placeholder="Enter phone" required>
+                                        <input type="text" class="form-control" placeholder="Telefon Numarası" required name='tel'>
                                    </div>
                               </div>
-                         </form>
+                              
+                         
                     </div>
-
                     <div class="modal-footer">
-                         <button type="button" class="section-btn btn btn-primary">Book Now</button>
+                         <button type="submit" class="section-btn btn btn-primary" name='byt'>Rezervasyon Yap</button>
                     </div>
+                    </form>
+                    <?php 
+                    if(isset ($_POST["byt"])){
+                         include("./components/connection.php");
+                         $isim = $_POST['isim'];
+                         $tc = $_POST['tc'];
+                         $tel = $_POST['tel'];
+                         $rdate = $_POST['rdate'];
+                         $vdate = $_POST['vdate'];
+                         
+                         $rloc = $_POST['rloc'];
+                         $mail = $_POST['mail'];
+                         $vloc = $_POST['vloc'];
+                         
+                         if(!empty($_POST['carss'])) {
+                              $selected = $_POST['carss'];
+                              $conn->prepare("INSERT INTO orders (customer_id,Customer_name,Customer_num,delivered_loc,return_loc,return_date,deliver_date,car) VALUES(?,?,?,?,?,?,?,?)")->execute([$tc,$isim,$tel,$vloc,$rloc,$rdate,$vdate,$selected]);
+                              
+                          } else {
+                              echo 'Araba Seçmediniz!';
+                          }
+
+                         
+                    }
+                    ?>
                </div>
           </div>
      </div>

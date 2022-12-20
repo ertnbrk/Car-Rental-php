@@ -1,8 +1,9 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 
-     <title>PHPJabber | Car Rental Website Template</title>
+     <title>Ertan Rent a Car</title>
 
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -24,6 +25,7 @@
 
      <?php 
      require_once './components/navbar.php';
+     
      ?>
 
      <section>
@@ -37,7 +39,7 @@
                          <form id="contact-form" method="post">
                               <div class="row">
                                    <div class="col-md-6">
-                                   <input type="text" class="form-control" placeholder="TC NO" required style="background-color:#3f51b5; border-radius: 15px; color:white;" name="tcno" pattern="\d*">
+                                   <input type="text" class="form-control" placeholder="TC NO" required maxlength = '11' minlength='11'style="background-color:#3f51b5; border-radius: 15px; color:white;" name="tcno" pattern="\d*">
                                    </div>
 
                                    <div class="col-md-6">
@@ -64,20 +66,33 @@
      $sifre = $_POST['sifre'];
      $admin = $conn->prepare("SELECT * FROM üye WHERE üyeTc = ? AND üyeSifre = ?");
     $admin->execute([$tc,$sifre]);
-    echo "Başarılı";
     $result = $admin->fetchAll(PDO::FETCH_ASSOC);
-    foreach($result as $rsw){
-        if ($rsw['admin'] == '1'){
-            echo "admin".$GLOBALS['isAdmin'];
-            $GLOBALS['isAdmin'] = 1;
-            
+    
+    foreach($result as $row){
+     
+     if($row['üyeTc'] !==NULL)
+        {
+          
+          $_SESSION['user'] = $row['üyeTc'];
+          $_SESSION['password'] = $row['üyeSifre'];
+          echo $row['üyeTc'];
+          if ($row['admin'] == '1'){
+               $_SESSION['admin'] = "1";
+                   
+             }
+             else{
+                 echo "üye";
+             }
+             echo'<meta http-equiv="refresh" content="0;URL=index.php">';     //! Header çalışmadı
         }
-        else{
-            echo "üye";
-        }
+     else{
+          echo 'Giriş Başarısız';
+
+     }
+     //
     }
         
-    //exit(header("Location: index.php"));
+    
    }
      ?>      
 
