@@ -62,7 +62,7 @@
                                    </div>
 
                                    <div class="col-md-6">
-                                   <input type="text" style="background-color:#3f51b5; border-radius: 15px; color:white;" class="form-control" placeholder="Telefon Numarası" minlength="10" name="tel" maxlength="10" required >
+                                   <input type="text" style="background-color:#3f51b5; border-radius: 15px; color:white;" class="form-control" placeholder="Telefon Numarası" minlength="10" name="tel" maxlength="10" required pattern="\d*">
                                         
                                    </div>
                               </div>
@@ -102,7 +102,7 @@
      $email = $_POST['email'];
      $telno = $_POST['tel'];
      $sifre = $_POST['sifre'];
-     $conn->prepare("INSERT INTO üye (üyeTc,üyeAd,üyeSoyad,üyeTelefon,üyeAdres,üyeMail,üyeSifre) VALUES(?,?,?,?,?,?,?)")->execute([$tc,$name,$soyad,$telno,$adres,$email,$sifre]);
+     $conn->prepare("INSERT INTO üye (üyeTc,üyeAd,üyeSoyad,üyeTelefon,üyeAdres,üyeMail,üyeSifre) VALUES(?,?,?,?,?,?,?)")->execute([$tc,$name,$soyad,$telno,$adres,$email,sha1($sifre)]);
      
      $_SESSION['user'] = $tc;
      $_SESSION['password'] = $sifre;

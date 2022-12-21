@@ -1,6 +1,10 @@
 <!-- PRE LOADER -->
 <?php
 session_start();
+
+require_once './components/connection.php';
+
+
 ?>
 <section class="preloader">
           <div class="spinner">
@@ -32,15 +36,24 @@ session_start();
                          <li class="active"><a href="index.php">Ana Ekran</a></li>
                          <li><a href="fleet.php">Garaj</a></li>
                          <li><a href="offers.php">Teklifler</a></li>
+                         
+                         
                          <li class="dropdown">
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Daha Fazla<span class="caret"></span></a>
                               
                               <ul class="dropdown-menu">
+
+
+                              <?php
+
+                                   $pages = $conn->prepare("SELECT id, title FROM pages ORDER BY `order` ASC");
+                                   $pages->execute([]);
                                    
-                                   <li><a href="about-us.php">Hakkımızda</a></li>
-                                   <li><a href="team.php">Team</a></li>
-                                   <li><a href="testimonials.php">Görüşler</a></li>
-                                   <li><a href="terms.php">Sözleşme</a></li>
+                                   foreach($pages->fetchAll(PDO::FETCH_ASSOC) as $navPage) {
+                                        
+                                        echo '<li><a href="page.php?id='.$navPage['id'].'">'.$navPage['title'].'</a></li>';
+                                   }
+                                   ?>
                               </ul>
                          </li>
                          <li><a href="contact.php">İletişim</a></li>
@@ -64,8 +77,7 @@ session_start();
                               ?>
                               <!-- -->
                          
-                         
-                         
+                    
                          
                          
                     </ul>

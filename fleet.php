@@ -109,7 +109,7 @@
                
                               <div class=\"courses-info\">
                               <form method=\"get\">
-                                   <button type=\"button\" data-toggle=\"modal\" data-target=\".bs-example-modal\" class=\"section-btn btn btn-primary btn-block\" name='small'>Rezervasyon Yap</button>
+                                   <button type=\"button\" data-toggle=\"modal\" data-target=\".bs-example-modal\" class=\"section-btn btn btn-primary btn-block\" name='small' onclick=\"aracSec('".$result[$sayi]['name']."')\">Rezervasyon Yap</button>
                                    </form>
                               </div>
                          </div>
@@ -139,6 +139,9 @@
                     
                     <div class="modal-body">
                          <form action="#" id="contact-form" method = 'post'>
+
+                              <input type="hidden" id="carss" name="carss" value="" />
+
                               <div class="row">
                                    <div class="col-md-6">
                                         <input type="text" class="form-control" placeholder="Teslim Edilecek yer" required name='vloc'>
@@ -172,7 +175,7 @@
                               <input type="text" class="form-control" placeholder="İsim Soyisim" required name='isim'>
                                    </div>
                                    <div class="col-md-6">
-                                   <input type="text" class="form-control" placeholder="Tc Kimlik Numarası" required name='tc'>
+                                   <input type="text" class="form-control" placeholder="Tc Kimlik Numarası" required name='tc' maxlength="11" minlength="10" required pattern="\d*">
                                    </div>
                               </div>
                               <div class="row">
@@ -181,7 +184,7 @@
                                    </div>
 
                                    <div class="col-md-6">
-                                        <input type="text" class="form-control" placeholder="Telefon Numarası" required name='tel'>
+                                        <input type="text" class="form-control" placeholder="Telefon Numarası" required name='tel' maxlength="10" minlength="10" required pattern="\d*">
                                    </div>
                               </div>
                               
@@ -192,7 +195,7 @@
                     </div>
                     </form>
                     <?php 
-                    if(isset ($_POST["byt"])){
+                    if(isset ($_POST["isim"])){
                          include("./components/connection.php");
                          $isim = $_POST['isim'];
                          $tc = $_POST['tc'];
@@ -204,14 +207,16 @@
                          $mail = $_POST['mail'];
                          $vloc = $_POST['vloc'];
                          
-                         if(!empty($_POST['carss'])) {
+                         if($vdate>$rdate){
+                              echo "Hatay";
+                         }
+
+                         else if(!empty($_POST['carss'])) {
                               $selected = $_POST['carss'];
                               $conn->prepare("INSERT INTO orders (customer_id,Customer_name,Customer_num,delivered_loc,return_loc,return_date,deliver_date,car) VALUES(?,?,?,?,?,?,?,?)")->execute([$tc,$isim,$tel,$vloc,$rloc,$rdate,$vdate,$selected]);
-                              
                           } else {
                               echo 'Araba Seçmediniz!';
                           }
-
                          
                     }
                     ?>
@@ -225,6 +230,12 @@
      <script src="js/owl.carousel.min.js"></script>
      <script src="js/smoothscroll.js"></script>
      <script src="js/custom.js"></script>
+
+     <script>
+          function aracSec(arac) {
+               document.getElementById("carss").value = arac;
+          }
+     </script>
 
 </body>
 </html>

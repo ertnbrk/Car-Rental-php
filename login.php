@@ -65,7 +65,7 @@
      $tc = $_POST['tcno'];
      $sifre = $_POST['sifre'];
      $admin = $conn->prepare("SELECT * FROM üye WHERE üyeTc = ? AND üyeSifre = ?");
-    $admin->execute([$tc,$sifre]);
+    $admin->execute([$tc,sha1($sifre)]);
     $result = $admin->fetchAll(PDO::FETCH_ASSOC);
     
     foreach($result as $row){
