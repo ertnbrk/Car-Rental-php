@@ -50,16 +50,22 @@ require_once './components/connection.php';
                                    $pages->execute([]);
                                    
                                    foreach($pages->fetchAll(PDO::FETCH_ASSOC) as $navPage) {
-                                        
+                                        if ($navPage['title'] == "İletişim"){
+                                             
+                                             $iletisimid = $navPage['id'];
+                                             $iletisimTitle = $navPage['title'];
+                                             continue;
+                                        }
                                         echo '<li><a href="page.php?id='.$navPage['id'].'">'.$navPage['title'].'</a></li>';
+                                        
                                    }
                                    ?>
                               </ul>
                          </li>
-                         <li><a href="contact.php">İletişim</a></li>
+                         
                          
                               <?php 
-                                   
+                                   echo '<li><a href="page.php?id='.$iletisimid.'">'.$iletisimTitle.'</a></li>';
                                    
                                    if (isset($_SESSION['admin'])){
                                         echo '<li><a href="admin.php" class="login">Admin</a></li>'; 
@@ -74,6 +80,7 @@ require_once './components/connection.php';
                                         <li><a href="login.php" class="login">Giriş</a></li>';
                                         
                                    }
+                                   
                               ?>
                               <!-- -->
                          

@@ -24,6 +24,7 @@
 
 <?php 
      require_once './components/navbar.php';
+     require_once './components/connection.php';
      ?>
      <section>
           <div class="container">
@@ -40,101 +41,31 @@
      <section class="section-background">
           <div class="container">
                <div class="row">
-                    <div class="col-md-4 col-sm-4">
-                         <div class="courses-thumb courses-thumb-secondary">
-                              <div class="courses-top">
-                                   <div class="courses-image">
-                                        <img src="images/offer-1-720x480.jpg" class="img-responsive" alt="">
-                                   </div>
-                              </div>
-
-                              <div class="courses-detail">
-                                   <h3><a href="fleet.php">Lorem ipsum dolor sit amet.</a></h3>
-                                   <p class="lead"><small>from</small> <strong>$99</strong> <small>per weekend</small></p>
-                                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                              </div>
-                         </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-4">
-                         <div class="courses-thumb courses-thumb-secondary">
-                              <div class="courses-top">
-                                   <div class="courses-image">
-                                        <img src="images/offer-2-720x480.jpg" class="img-responsive" alt="">
-                                   </div>
-                              </div>
-
-                              <div class="courses-detail">
-                                   <h3><a href="fleet.php">Animi eligendi minus</a></h3>
-                                   <p class="lead"><small>from</small> <strong>$99</strong> <small>per weekend</small></p>
-                                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    
+               <?php 
+               $offers = $conn->prepare("SELECT * FROM offers");
+               $offers->execute();
+               $result = $offers->fetchAll(PDO::FETCH_ASSOC);
+               foreach ($result as $row){
+                    echo '<div class="col-md-4 col-sm-4">
+                    <div class="courses-thumb courses-thumb-secondary">
+                         <div class="courses-top">
+                              <div class="courses-image">
+                              <img src=\'data:image/jpeg;base64,'.base64_encode($row['offerimage']).'\' class="img-responsive">
                               </div>
                          </div>
-                    </div>
 
-                    <div class="col-md-4 col-sm-4">
-                         <div class="courses-thumb courses-thumb-secondary">
-                              <div class="courses-top">
-                                   <div class="courses-image">
-                                        <img src="images/offer-3-720x480.jpg" class="img-responsive" alt="">
-                                   </div>
-                              </div>
-
-                              <div class="courses-detail">
-                                   <h3><a href="fleet.php">Rerum accusantium </a></h3>
-                                   <p class="lead"><small>from</small> <strong>$99</strong> <small>per weekend</small></p>
-                                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                              </div>
+                         <div class="courses-detail">
+                              <h3><a href="fleet.php">'.$row['Caption'].'</a></h3>
+                              <p class="lead"><strong>'.$row['offer'].'</strong></p>
+                              <p>'.$row['Description'].'</p>
                          </div>
                     </div>
-
-                    <div class="col-md-4 col-sm-4">
-                         <div class="courses-thumb courses-thumb-secondary">
-                              <div class="courses-top">
-                                   <div class="courses-image">
-                                        <img src="images/offer-4-720x480.jpg" class="img-responsive" alt="">
-                                   </div>
-                              </div>
-
-                              <div class="courses-detail">
-                                   <h3><a href="fleet.php">Deleniti magni cupiditate</a></h3>
-                                   <p class="lead"><small>from</small> <strong>$99</strong> <small>per weekend</small></p>
-                                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                              </div>
-                         </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-4">
-                         <div class="courses-thumb courses-thumb-secondary">
-                              <div class="courses-top">
-                                   <div class="courses-image">
-                                        <img src="images/offer-5-720x480.jpg" class="img-responsive" alt="">
-                                   </div>
-                              </div>
-
-                              <div class="courses-detail">
-                                   <h3><a href="fleet.php">Voluptate officiis nesit</a></h3>
-                                   <p class="lead"><small>from</small> <strong>$99</strong> <small>per weekend</small></p>
-                                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                              </div>
-                         </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-4">
-                         <div class="courses-thumb courses-thumb-secondary">
-                              <div class="courses-top">
-                                   <div class="courses-image">
-                                        <img src="images/offer-6-720x480.jpg" class="img-responsive" alt="">
-                                   </div>
-                              </div>
-
-                              <div class="courses-detail">
-                                   <h3><a href="fleet.php">Lorem ipsum dolor sit amet.</a></h3>
-                                   <p class="lead"><small>from</small> <strong>$99</strong> <small>per weekend</small></p>
-                                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                              </div>
-                         </div>
-                    </div>
+               </div>';
+               }
+               
+               ?>
+                    
                </div>
           </div>
      </section>

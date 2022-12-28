@@ -25,7 +25,7 @@
 
      <?php 
      require_once './components/navbar.php';
-     
+     // 15233333333 şifre : 123456789
      ?>
 
      <section>
@@ -75,6 +75,8 @@
           
           $_SESSION['user'] = $row['üyeTc'];
           $_SESSION['password'] = $row['üyeSifre'];
+          $_SESSION['tel'] = $row['üyeTelefon'];
+          $_SESSION['ad'] = $row['üyeAd'];
           echo $row['üyeTc'];
           if ($row['admin'] == '1'){
                $_SESSION['admin'] = "1";

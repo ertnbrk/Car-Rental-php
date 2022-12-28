@@ -196,11 +196,6 @@ https://templatemo.com/tm-516-known
   }
 
 
-
-  /*---------------------------------------
-     BUTTONS               
-  -----------------------------------------*/
-
   .section-btn {
     background: transparent;
     border-radius: 50px;
@@ -219,9 +214,7 @@ https://templatemo.com/tm-516-known
 
 
 
-  /*---------------------------------------
-       PRE LOADER              
-  -----------------------------------------*/
+
 
   .preloader {
     position: fixed;
@@ -400,25 +393,23 @@ https://templatemo.com/tm-516-known
   
   .caption h3 a { color: #FFF; }
   .caption h3 a:hover { color: #FF3; }
-
+  
   .home-slider .item-first {
-    background-image: url(../images/slider-image-1-1920x700.jpg);
+    /*background-image: url(../images/slider-image-1-1920x700.jpg); */
 	background-position: center;
   }
 
   .home-slider .item-second {
-    background-image: url(../images/slider-image-2-1920x700.jpg);
+   /* background-image: url(../images/slider-image-2-1920x700.jpg);*/
   }
 
   .home-slider .item-third {
-    background-image: url(../images/slider-image-3-1920x700.jpg);
+    /* background-image: url(../images/slider-image-3-1920x700.jpg);*/
   }
 
+.panel-heading
 
 
-  /*---------------------------------------
-      FEATURE              
-  -----------------------------------------*/
 
   .feature-thumb {
     border: 1px solid #f0f0f0;
@@ -479,7 +470,14 @@ https://templatemo.com/tm-516-known
   /*---------------------------------------
       TEAM              
   -----------------------------------------*/
-
+  .my-custom-scrollbar {
+    position: relative;
+    height: 200px;
+    overflow: auto;
+    }
+    .table-wrapper-scroll-y {
+    display: block;
+    }
   .team-thumb {
     position: relative;
     overflow: hidden;
@@ -509,9 +507,6 @@ https://templatemo.com/tm-516-known
   }
 
 
-  /*---------------------------------------
-      COURSES             
-  -----------------------------------------*/
 
   #courses .section-title {
     text-align: center;
@@ -618,33 +613,6 @@ https://templatemo.com/tm-516-known
   }
 
 
-
-  /*---------------------------------------
-     NEWS              
-  -----------------------------------------*/
-
-  .news-thumb {
-    clear: both;
-    position: relative;
-    overflow: hidden;
-    margin-bottom: 30px;
-  }
-
-  .news-thumb .news-image {
-    float: left;
-    width: 40%;
-    margin-right: 30px;
-  }
-
-  .news-info h3 {
-    margin-top: 5px;
-    margin-bottom: 10px;
-  }
-
-  .news-date span {
-    color: #909090;
-    font-weight: bold;
-  }
 
 
 

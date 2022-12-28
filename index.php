@@ -24,48 +24,38 @@
 
 <?php 
      require_once './components/navbar.php';
-     
+     require_once './components/connection.php';
+
      ?>
 
      <!-- HOME -->
      <section id="home">
           <div class="row">
                <div class="owl-carousel owl-theme home-slider">
-                    <div class="item item-first">
+                    <?php 
+                    $slider = $conn->prepare("SELECT sliderbaslik,slideraciklama,resim FROM slider");
+                    $slider->execute();
+                    $result = $slider->fetchAll(PDO::FETCH_ASSOC);
+                    $count = 0;
+                    $a = array('first','second','third');
+                    foreach ($result as $row){
+                         echo '
+                    <div class="item item-'.$a[$count].'" style="background-image:'.base64_encode($row['resim']).';">
                          <div class="caption">
                               <div class="container">
                                    <div class="col-md-6 col-sm-12">
-                                        <h1>Harika açık havayı fethetmek için mükemmel arabayı bulun!</h1>
-                                        <h3>Kış yollarında kolaylıkla ilerlemek için sağlam bir 4x4 veya sizi tatil köylerine görütürecek bir karavana binin.</h3>
+                                   <h1>'.$row['sliderbaslik'].'</h1>
+                                        <h3>'.$row['slideraciklama'].'</h3>
                                         <a href="fleet.php" class="section-btn btn btn-default">Fleet</a>
                                    </div>
                               </div>
                          </div>
-                    </div>
+                    </div>';
+                    $count+=1;
+                    }
+                    ?>
 
-                    <div class="item item-second">
-                         <div class="caption">
-                              <div class="container">
-                                   <div class="col-md-6 col-sm-12">
-                                   <h1>Harika açık havayı fethetmek için mükemmel arabayı bulun!</h1>
-                                        <h3>Kış yollarında kolaylıkla ilerlemek için sağlam bir 4x4 veya sizi tatil köylerine görütürecek bir karavana binin.</h3>
-                                        <a href="fleet.php" class="section-btn btn btn-default">Fleet</a>
-                                   </div>
-                              </div>
-                         </div>
-                    </div>
-
-                    <div class="item item-third">
-                         <div class="caption">
-                              <div class="container">
-                                   <div class="col-md-6 col-sm-12">
-                                   <h1>Harika açık havayı fethetmek için mükemmel arabayı bulun!</h1>
-                                        <h3>Kış yollarında kolaylıkla ilerlemek için sağlam bir 4x4 veya sizi tatil köylerine görütürecek bir karavana binin.</h3>
-                                        <a href="fleet.php" class="section-btn btn btn-default">Fleet</a>
-                                   </div>
-                              </div>
-                         </div>
-                    </div>
+                    
                </div>
           </div>
      </section>
@@ -81,7 +71,7 @@
                                    <br>
 
                                    <p class="lead">Özel araçlardan kargo kamyonetlerine kadar geniş bir yelpazede kiralama seçenekleri sunuyoruz.Prestijli kiralık arabalarımızdan biriyle şık bir şekilde gelin. Dünyanın önde gelen üreticilerinden özel, lüks ve sportif kiralık araç yelpazemizi keşfedin.</p>
-                                   <a href="about-us.php" class="section-btn btn btn-primary btn-block">Daha fazla öğren</a>
+                                   <a href="page.php?id=1" class="section-btn btn btn-primary btn-block">Daha fazla öğren</a>
                               </div>
                          </div>
                     </div>
@@ -122,7 +112,7 @@
                                    </div>
                                    <div class="team-info">
                                         <h3>LÜKS & PRESTİJ ARABALAR
-</h3>
+                                   </h3>
 
                                         <p class="lead"> <strong>$99</strong> <small>Günlük</small></p>
 
@@ -167,81 +157,36 @@
                               </div>
 
                               <div class="owl-carousel owl-theme owl-client">
-                                   <div class="col-md-4 col-sm-4">
-                                        <div class="item">
-                                             <div class="tst-image">
-                                                  <img src="images/tst-image-1-200x216.jpg" class="img-responsive" alt="">
-                                             </div>
-                                             <div class="tst-author">
-                                                  <h4>Jackson</h4>
-                                                  <span>Shopify Developer</span>
-                                             </div>
-                                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam voluptas, facilis adipisci dolorem exercitationem nemo aut error impedit repudiandae iusto.</p>
-                                             <div class="tst-rating">
-                                                  <i class="fa fa-star"></i>
-                                                  <i class="fa fa-star"></i>
-                                                  <i class="fa fa-star"></i>
-                                                  <i class="fa fa-star"></i>
-                                                  <i class="fa fa-star"></i>
-                                             </div>
-                                        </div>
+                                   <?php 
+                         $test = $conn->prepare("SELECT names,title,images,comment,star FROM testimonials");
+                         $test->execute();
+                         $result = $test->fetchAll(PDO::FETCH_ASSOC);
+                         foreach ($result as $row){
+                              
+                              echo " <div class='col-md-4 col-sm-4'>
+                              <div class='item'>
+                                   <div class='tst-image'>
+                                   <img src='data:image/jpeg;base64,".base64_encode($row['images'])."' class='img-responsive'>
                                    </div>
+                                   <div class='tst-author'>
+                                   <h4>".$row['names']."</h4>
+                                   <span>".$row['title']."</span>
+                                   </div>
+                                   <p>".$row['comment']."</p>
+                                   <div class='tst-rating'>";
+                                        
+                                   
+                         for ($x = 0; $x < $row['star']; $x++) {
+                              echo " <i class='fa fa-star'></i>   
+                              ";
+                            }
+                            echo "</div>
+                              </div>
+                         </div>";
+                         
+                         }
 
-                                   <div class="col-md-4 col-sm-4">
-                                        <div class="item">
-                                             <div class="tst-image">
-                                                  <img src="images/tst-image-2-200x216.jpg" class="img-responsive" alt="">
-                                             </div>
-                                             <div class="tst-author">
-                                                  <h4>Camila</h4>
-                                                  <span>Marketing Manager</span>
-                                             </div>
-                                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente error, unde eos laborum consequatur officiis perferendis vel debitis, dolore, ipsum quibusdam culpa quisquam, reiciendis aspernatur.</p>
-                                             <div class="tst-rating">
-                                                  <i class="fa fa-star"></i>
-                                                  <i class="fa fa-star"></i>
-                                                  <i class="fa fa-star"></i>
-                                             </div>
-                                        </div>
-                                   </div>
-
-                                   <div class="col-md-4 col-sm-4">
-                                        <div class="item">
-                                             <div class="tst-image">
-                                                  <img src="images/tst-image-3-200x216.jpg" class="img-responsive" alt="">
-                                             </div>
-                                             <div class="tst-author">
-                                                  <h4>Barbie</h4>
-                                                  <span>Art Director</span>
-                                             </div>
-                                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit laborum minima autem, reprehenderit mollitia amet id, beatae quo sequi culpa assumenda neque a quisquam, magni.</p>
-                                             <div class="tst-rating">
-                                                  <i class="fa fa-star"></i>
-                                                  <i class="fa fa-star"></i>
-                                                  <i class="fa fa-star"></i>
-                                                  <i class="fa fa-star"></i>
-                                             </div>
-                                        </div>
-                                   </div>
-
-                                   <div class="col-md-4 col-sm-4">
-                                        <div class="item">
-                                             <div class="tst-image">
-                                                  <img src="images/tst-image-4-200x216.jpg" class="img-responsive" alt="">
-                                             </div>
-                                             <div class="tst-author">
-                                                  <h4>Andrio</h4>
-                                                  <span>Web Developer</span>
-                                             </div>
-                                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore natus culpa laudantium sit dolores quidem at nulla, iure atque laborum! Odit tempora, enim aliquid at modi illum ducimus explicabo soluta.</p>
-                                             <div class="tst-rating">
-                                                  <i class="fa fa-star"></i>
-                                                  <i class="fa fa-star"></i>
-                                                  <i class="fa fa-star"></i>
-                                                  <i class="fa fa-star"></i>
-                                             </div>
-                                        </div>
-                                   </div>
+                         ?>
 
                               </div>
                         </div>

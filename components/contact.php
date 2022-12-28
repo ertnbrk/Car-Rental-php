@@ -26,17 +26,7 @@
      require_once './components/navbar.php';
      ?>
 
-     <section>
-          <div class="container">
-               <div class="text-center">
-                    <h1>Bizimle İletişime geç</h1>
-
-                    <br>
-
-                    <p class="lead">Şikayet,öneri,memnuniyet,danışma ve Takıma katılmak için bizimle iletişime geç</p>
-               </div>
-          </div>
-     </section>
+     
 
 
      <?php

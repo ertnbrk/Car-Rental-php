@@ -115,6 +115,7 @@ $page = $page[0];
                     </div>
                     </section>";
      }
+     
      else{
      echo $page['content'];
      }
@@ -122,6 +123,7 @@ $page = $page[0];
 
 
      <?php
+     require_once './components/contact.php';
    require_once './components/footer.php';
    
    ?>

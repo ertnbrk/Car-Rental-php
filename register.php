@@ -103,7 +103,8 @@
      $telno = $_POST['tel'];
      $sifre = $_POST['sifre'];
      $conn->prepare("INSERT INTO üye (üyeTc,üyeAd,üyeSoyad,üyeTelefon,üyeAdres,üyeMail,üyeSifre) VALUES(?,?,?,?,?,?,?)")->execute([$tc,$name,$soyad,$telno,$adres,$email,sha1($sifre)]);
-     
+     $_SESSION['ad'] = $name;
+     $_SESSION['tel'] = $telno;
      $_SESSION['user'] = $tc;
      $_SESSION['password'] = $sifre;
 
