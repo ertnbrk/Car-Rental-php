@@ -27,7 +27,7 @@ require_once './components/connection.php';
                     </button>
 
                     <!-- lOGO TEXT HERE -->
-                    <a href="index.php" class="navbar-brand">DPU Car Rental</a>
+                    <a href="index.php" class="navbar-brand">Ertan Car Rental</a>
                </div>
 
                <!-- MENU LINKS -->
@@ -35,7 +35,7 @@ require_once './components/connection.php';
                     <ul class="nav navbar-nav navbar-nav-first">
                          <li class="active"><a href="index.php">Ana Ekran</a></li>
                          <li><a href="fleet.php">Garaj</a></li>
-                         <li><a href="offers.php">Teklifler</a></li>
+                         
                          
                          
                          <li class="dropdown">

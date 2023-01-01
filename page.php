@@ -34,7 +34,7 @@ $page = $page[0];
 
      <!-- MAIN CSS -->
      <link rel="stylesheet" href="css/style.css">
-
+     
 </head>
 <body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
 
@@ -70,7 +70,7 @@ $page = $page[0];
                               
                               echo " <div class='col-sm-4 col-xs-12'><div class='item' style='max-height:250px;'>
                          <div class='tst-image'>
-                              <img src='data:image/jpeg;base64,".base64_encode($row['images'])."' class='img-responsive'>
+                              <img src='./images/".$row['images']."' class='img-responsive'>
                          </div>
                          <div class='tst-author'>
                               <h4>".$row['names']."</h4>
@@ -101,7 +101,7 @@ $page = $page[0];
                     echo "<div class='col-md-3 col-sm-6'>
                     <div class='team-thumb'>
                          <div class='team-image'>
-                         <img src='data:image/jpeg;base64,".base64_encode($row['image'])."' style = ' width:345px;height:300px;'class='img-responsive'>
+                         <img src='./images/".$row['images']."' style = ' width:345px;height:300px;'class='img-responsive'>
                          </div>
                          <div class='team-info'>
                          <h3>".$row['isim']." ".$row['soyisim']."</h3>

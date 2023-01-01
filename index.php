@@ -20,7 +20,7 @@
      <link rel="stylesheet" href="css/style.css">
 
 </head>
-<body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
+<body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50" >
 
 <?php 
      require_once './components/navbar.php';
@@ -29,29 +29,23 @@
      ?>
 
      <!-- HOME -->
-     <section id="home">
+     <section id="home" >
           <div class="row">
-               <div class="owl-carousel owl-theme home-slider">
+               <div class="owl-carousel owl-theme home-slider" style="position:relative;" >
                     <?php 
-                    $slider = $conn->prepare("SELECT sliderbaslik,slideraciklama,resim FROM slider");
+                    $slider = $conn->prepare("SELECT * FROM slider");
                     $slider->execute();
                     $result = $slider->fetchAll(PDO::FETCH_ASSOC);
-                    $count = 0;
-                    $a = array('first','second','third');
+                    
+                    
                     foreach ($result as $row){
                          echo '
-                    <div class="item item-'.$a[$count].'" style="background-image:'.base64_encode($row['resim']).';">
-                         <div class="caption">
-                              <div class="container">
-                                   <div class="col-md-6 col-sm-12">
-                                   <h1>'.$row['sliderbaslik'].'</h1>
-                                        <h3>'.$row['slideraciklama'].'</h3>
-                                        <a href="fleet.php" class="section-btn btn btn-default">Fleet</a>
-                                   </div>
-                              </div>
-                         </div>
-                    </div>';
-                    $count+=1;
+                    
+                    
+                    <img src="./images/'.$row["resim"].'" style="height:100%;">
+                         
+                    ';
+                    
                     }
                     ?>
 
@@ -62,9 +56,9 @@
 
      <main>
           <section>
-               <div class="container">
+               <div class="container" >
                     <div class="row">
-                         <div class="col-md-12 col-sm-12">
+                         <div class="col-md-12 col-sm-12" >
                               <div class="text-center">
                                    <h2>Hakkımızda</h2>
 
@@ -78,72 +72,7 @@
                </div>
           </section>
 
-          <section>
-               <div class="container">
-                    <div class="row">
-                         <div class="col-md-12 col-sm-12">
-                              <div class="section-title text-center">
-                                   <h2>Teklifler <small>Dudak uçuklatan tekliflerimiz</small></h2>
-                              </div>
-                         </div>
-
-                         <div class="col-md-4 col-sm-6">
-                              <div class="team-thumb">
-                                   <div class="team-image">
-                                        <img src="images/offer-1-720x480.jpg" class="img-responsive" alt="">
-                                   </div>
-                                   <div class="team-info">
-                                        <h3>Aile Arabalarımız</h3>
-
-                                        <p class="lead"> <strong>$120</strong> <small>Günlük</small></p>
-
-                                        <span>Aile ile gezintiye çıkmak için ideal araçlarımız...</span>
-                                   </div>
-                                   <div class="team-thumb-actions">
-                                        <a href="offers.php" class="section-btn btn btn-primary btn-block">Teklifleri Gör</a>
-                                   </div>
-                              </div>
-                         </div>
-
-                         <div class="col-md-4 col-sm-6">
-                              <div class="team-thumb">
-                                   <div class="team-image">
-                                        <img src="images/offer-2-720x480.jpg" class="img-responsive" alt="">
-                                   </div>
-                                   <div class="team-info">
-                                        <h3>LÜKS & PRESTİJ ARABALAR
-                                   </h3>
-
-                                        <p class="lead"> <strong>$99</strong> <small>Günlük</small></p>
-
-                                        <span>Lüks ve ortamlık bir araç arıyorsanız doğru yerdesiniz...</span>
-                                   </div>
-                                   <div class="team-thumb-actions">
-                                        <a href="offers.php" class="section-btn btn btn-primary btn-block">Teklifleri Gör</a>
-                                   </div>
-                              </div>
-                         </div>
-
-                         <div class="col-md-4 col-sm-6">
-                              <div class="team-thumb">
-                                   <div class="team-image">
-                                        <img src="images/offer-3-720x480.jpg" class="img-responsive" alt="">
-                                   </div>
-                                   <div class="team-info">
-                                        <h3>Çok Satanlar</h3>
-
-                                        <p class="lead"><strong>$110</strong> <small>Günlük</small></p>
-
-                                        <span></span>
-                                   </div>
-                                   <div class="team-thumb-actions">
-                                        <a href="offers.php" class="section-btn btn btn-primary btn-block">Teklifleri Gör</a>
-                                   </div>
-                              </div>
-                         </div>
-                    </div>
-               </div>
-          </section>
+          
           
                
                     
@@ -166,7 +95,7 @@
                               echo " <div class='col-md-4 col-sm-4'>
                               <div class='item'>
                                    <div class='tst-image'>
-                                   <img src='data:image/jpeg;base64,".base64_encode($row['images'])."' class='img-responsive'>
+                                   <img src='./images/".$row['images']."' class='img-responsive'>
                                    </div>
                                    <div class='tst-author'>
                                    <h4>".$row['names']."</h4>

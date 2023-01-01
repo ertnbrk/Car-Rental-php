@@ -353,6 +353,8 @@ https://templatemo.com/tm-516-known
 
   #home {
     padding: 0;
+    
+
   }
 
   #home h1 {
@@ -373,16 +375,6 @@ https://templatemo.com/tm-516-known
     }
   }
 
-  .home-slider .caption {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    text-align: left;
-    background-color: rgba(20,20,20,0.2);
-    height: 100%;
-    color: #fff;
-    cursor: e-resize;
-  }
 
   .home-slider .item {
     background-repeat: no-repeat;
@@ -394,17 +386,9 @@ https://templatemo.com/tm-516-known
   .caption h3 a { color: #FFF; }
   .caption h3 a:hover { color: #FF3; }
   
-  .home-slider .item-first {
-    /*background-image: url(../images/slider-image-1-1920x700.jpg); */
+  .home-slider .item-slider {
+/*  background-image: url(../images/slider-image-1-1920x700.jpg); */
 	background-position: center;
-  }
-
-  .home-slider .item-second {
-   /* background-image: url(../images/slider-image-2-1920x700.jpg);*/
-  }
-
-  .home-slider .item-third {
-    /* background-image: url(../images/slider-image-3-1920x700.jpg);*/
   }
 
 .panel-heading
@@ -478,6 +462,7 @@ https://templatemo.com/tm-516-known
     .table-wrapper-scroll-y {
     display: block;
     }
+   
   .team-thumb {
     position: relative;
     overflow: hidden;
@@ -687,7 +672,7 @@ https://templatemo.com/tm-516-known
   #contact .section-title {
     padding-bottom: 20px;
   }
-
+  
   #contact h2 > small,
   #contact p,
   #contact a {

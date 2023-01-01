@@ -59,6 +59,7 @@
      }
 
      $musteri = $conn->prepare("SELECT * FROM orders WHERE ")
+     
      ?>
 
      <section>
@@ -107,14 +108,21 @@
                     $cars = $conn->prepare("SELECT * FROM cars WHERE miktar>0");
                     $cars->execute();
                     $results = $cars->fetchAll(PDO::FETCH_ASSOC);
-                    
+                    $stmt = $conn->prepare("SELECT * FROM offers WHERE aktif=?"); 
+                                     $stmt->execute(['1']); 
+                                     $row = $stmt->fetch();
+                                   
+                                     $teklif = $row['teklif'];
+                                     $teklif = $teklif *100;
+                                     $kosul = $row['kosul'];
                     foreach($results as $result){
                          if ($result['miktar']>0){
                          echo "<div class='col-md-4 col-sm-4'>
                          <div class='courses-thumb courses-thumb-secondary'>
                               <div class='courses-top'>
                                    <div class='courses-image'>
-                                   <img src='./images/cars/".$result['images']."' class='img-responsive'>
+                                   <img src='./images/cars/".$result['images']."' class='img-responsive' style ='max-width:100%;
+                                   height: 250px;'>
                                    </div>
                                    <div class=\"courses-date\">
                                    <span title=\"passegengers\"><i class=\"fa fa-user\"></i> ".$result['capacity']."</span>
@@ -134,7 +142,7 @@
                
                               <div class=\"courses-info\">
                               <form method=\"get\">
-                                   <button type=\"button\" data-toggle=\"modal\" data-target=\".bs-example-modal\" class=\"section-btn btn btn-primary btn-block\" name='small' onclick=\"aracSec('".$result['names']."','".$result['Fiyat']."')\">Rezervasyon Yap</button>
+                                   <button type=\"button\" data-toggle=\"modal\" data-target=\".bs-example-modal\" class=\"section-btn btn btn-primary btn-block\" name='small' onclick=\"aracSec('".$result['id']."','".$result['Fiyat']."','".$teklif."')\">Rezervasyon Yap</button>
                                    </form>
                               </div>
                          </div>
@@ -220,20 +228,32 @@
                                    </div>
                               </div>
                               
-                              <?php  }
+                              <?php echo "<strong  style='color:green; font-size: 25px;' id='fiyatim'> </strong> <strong  style='color:green; font-size: 25px;' >$</strong>";  }
                               else {
                                    
                                    
                                    $res = $conn->prepare("SELECT count(*) FROM orders WHERE customer_id = ?");
                                      $res->execute([$_SESSION['user']]);
-                                     $number_of_rows = $res->fetchColumn(); 
+                                     $number_of_rows = $res->fetchColumn();
                                      
-                                   if ($number_of_rows%3 == 0){
-                                        echo '<div class="alert alert-success" role="alert">%20 indiriminiz mevcut</div>';
+                                     
+                                   if ($number_of_rows%$kosul == 0){
+                                        echo '<div class="alert alert-success" role="alert" value='.$row["teklif"].' id="teklif">%'.$teklif.' indiriminiz mevcut</div>';
+                                        echo "<p><del  style='color:red; font-size: 15px;' id='fiyatim'></del><sub>
+                                        <strong id='yenifiyat' style='color:green; font-size: 20px;'></strong><strong style='color:green; font-size: 20px;'>$</strong></sub></p>
+                                        ";
+
                                    }
+                                   else {
+                                        echo "<strong  style='color:green; font-size: 25px;' id='fiyatim'> </strong> <strong  style='color:green; font-size: 25px;' >$</strong>";
+                                   }
+                                   
+                                   
                               }
                               
+                              
                               ?>
+                              
                               
                               
                          
@@ -246,7 +266,6 @@
                     <?php 
                     if(isset($_POST['fiyat'])){
                          $fiyat = $_POST['fiyat'];
-                         echo $fiyat;
                     }
                      if(isset ($_POST["rloc"])){
                          
@@ -280,10 +299,22 @@
                          else if(!empty($_POST['carss'])) {
                               //araba miktarını 1 azaltıyorum
                               $selected = $_POST['carss'];
-                              $conn->prepare("INSERT INTO orders (customer_id,Customer_name,Customer_num,delivered_loc,return_loc,return_date,deliver_date,car) VALUES(?,?,?,?,?,?,?,?)")->execute([$tc,$isim,$tel,$vloc,$rloc,$rdate,$vdate,$selected]);
-                              $conn
-                              ->prepare("UPDATE cars SET miktar = miktar-1 WHERE names = ?")
-                              ->execute([$selected]);
+                              if(isset($_SESSION['ad'])){
+                                   if ($number_of_rows%$kosul == 0){
+                                        $conn->prepare("INSERT INTO orders (customer_id,Customer_name,Customer_num,delivered_loc,return_loc,return_date,deliver_date,car,indirim) VALUES(?,?,?,?,?,?,?,?,?)")->execute([$tc,$isim,$tel,$vloc,$rloc,$rdate,$vdate,$selected,$teklif]);
+                                        $conn
+                                        ->prepare("UPDATE cars SET miktar = miktar-1 WHERE id = ?")
+                                        ->execute([$selected]);
+                              }
+                              else{
+                                   $conn->prepare("INSERT INTO orders (customer_id,Customer_name,Customer_num,delivered_loc,return_loc,return_date,deliver_date,car,indirim) VALUES(?,?,?,?,?,?,?,?,?)")->execute([$tc,$isim,$tel,$vloc,$rloc,$rdate,$vdate,$selected,"0"]);
+                                   $conn
+                                   ->prepare("UPDATE cars SET miktar = miktar-1 WHERE id = ?")
+                                   ->execute([$selected]);
+                              }
+                              
+                         }
+                         
                               
                          } 
                          else {
@@ -309,10 +340,12 @@
      <script src="js/custom.js"></script>
 
      <script>
-          function aracSec(arac,fiyatt) {
+          function aracSec(arac,fiyatt,teklif) {
                document.getElementById("carss").value = arac;
                document.getElementById('fiyat').value = fiyatt; //fiyatı yazdıramıyorum
-          }
+               document.getElementById('fiyatim').innerHTML = fiyatt;
+               document.getElementById('yenifiyat').innerHTML = (fiyatt * (100-teklif))/100;
+          }    
           function clearForm(){
                document.getElementById("contact-form").clear();
           }
