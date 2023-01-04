@@ -259,7 +259,7 @@
                          
                     </div>
                     <div class="modal-footer">
-                         <button type="submit" class="section-btn btn btn-primary" name='byt'>Rezervasyon Yap</button>
+                         <button type="submit" onclick = clearform() class="section-btn btn btn-primary" name='byt'>Rezervasyon Yap</button>
                     </div>
                     
                     </form>
@@ -298,19 +298,24 @@
 
                          else if(!empty($_POST['carss'])) {
                               //araba miktarını 1 azaltıyorum
+                              echo "<script>alert('araba')</script>";
                               $selected = $_POST['carss'];
-                              if(isset($_SESSION['ad'])){
+                              if(isset($isim)){
+                                   echo "<script>alert('ad')</script>";
                                    if ($number_of_rows%$kosul == 0){
+                                        echo "<script>alert('bara')</script>";
                                         $conn->prepare("INSERT INTO orders (customer_id,Customer_name,Customer_num,delivered_loc,return_loc,return_date,deliver_date,car,indirim) VALUES(?,?,?,?,?,?,?,?,?)")->execute([$tc,$isim,$tel,$vloc,$rloc,$rdate,$vdate,$selected,$teklif]);
                                         $conn
                                         ->prepare("UPDATE cars SET miktar = miktar-1 WHERE id = ?")
                                         ->execute([$selected]);
                               }
                               else{
+                                   
                                    $conn->prepare("INSERT INTO orders (customer_id,Customer_name,Customer_num,delivered_loc,return_loc,return_date,deliver_date,car,indirim) VALUES(?,?,?,?,?,?,?,?,?)")->execute([$tc,$isim,$tel,$vloc,$rloc,$rdate,$vdate,$selected,"0"]);
                                    $conn
                                    ->prepare("UPDATE cars SET miktar = miktar-1 WHERE id = ?")
                                    ->execute([$selected]);
+                                   
                               }
                               
                          }
@@ -346,8 +351,12 @@
                document.getElementById('fiyatim').innerHTML = fiyatt;
                document.getElementById('yenifiyat').innerHTML = (fiyatt * (100-teklif))/100;
           }    
+          
           function clearForm(){
-               document.getElementById("contact-form").clear();
+               document.getElementById("contact-form").reset();
+               
+               document.getElementsByName("tmodal").reset();
+               //document.getElementsByClassName("contact-form").reset();
           }
           //formu resetleme
      </script>

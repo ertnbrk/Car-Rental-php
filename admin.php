@@ -1,9 +1,4 @@
-<?php 
- if(!isset($_SESSION['ad'])){
-    // header("Location:index.php");
- }
 
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,6 +25,9 @@
 
      <?php 
      require_once './components/navbar.php';
+     if(!isset($_SESSION['admin'])){
+          header("Location:index.php");
+          }
      ?>
 
      <section>
@@ -132,7 +130,7 @@
                 <div class="row">
                     <div class="col-md-7
                     ">
-                    <div class="embed-responsive embed-responsive-16by9" style="overflow:auto;">
+                    <div class="embed-responsive embed-responsive-16by9">
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped mb-0" >
                                 <thead>
@@ -141,7 +139,7 @@
                                         <th>Müşteri Numarası</th>
                                         <th>İsim</th>
                                         <th>Numarası</th>
-                                        <th>TEslim yeri</th>
+                                        <th>Teslim yeri</th>
                                         <th>Geri teslim yeri</th>
                                         <th>Süre(gün)</th>
                                         <th>Araba</th>
@@ -183,7 +181,7 @@
                     <div class="col-md-5" id="messtable">
                         <!--Mesajlar buraya gelicek -->
                         <div class="table-wrapper-scroll-y my-custom-scrollbar" style="max-height:360px; overflow:auto;">
-                        <table class="table">
+                        <table class="table" style="overflow:auto;">
                         <thead>
                             <tr>
                             <th>Gönderen</th>
@@ -207,7 +205,6 @@
                         
                         
 <!-- Table -->
-
   
     
     <tr class="list-group-item-info">
@@ -220,12 +217,6 @@
 </div>
              </div>
                
-
-
-
-
-
-
 ';}?></tbody>
 </table> </div>
                     </div>
@@ -533,6 +524,7 @@
                     <div class="row">
                               <div class="col-md-4">
                               <button type="button" data-toggle="modal" data-target="#teammodal" style="margin-bottom:20px; width:90px;height:90px; text-align:center;" class="section-btn btn btn-primary btn-block" name='ekle' onclick=clearForm();modalsec("ekleteam")><img src="../car-rental/images/add.png" style='width:30px;height:30px;  align:center;'></button></h1>
+               </form>
                                    <?php 
                                    
                                    $team = $conn->prepare("SELECT * FROM team");
@@ -556,15 +548,13 @@
                     <div class='row'>
                     
                     <div class='col-md-6'>
-
                     <input type=\"hidden\" name=\"teamid\" value='".$row['id']."' id=\"takimid\"/>
                     <button type='submit'  name='silt'  style='width:100%; height:30px;' class='btn btn-danger' >SİL</button>
                     
                     </div>
                     
                     <div class='col-md-6'>
-                    <button type='button' data-toggle='modal' data-target='#teammodal'onclick=teammodals('".$row['isim']."','".$row['soyisim']."','".$row['Pozisyon']."','team');modalsec('teamduzen') name='duzenlet' style='width:100%; height:30px;' class='btn btn-info' >Düzenle</button>
-
+                    <button type='button' data-toggle='modal' data-target='#teammodal'onclick=teammodals('".$row['isim']."','".$row['soyisim']."','".$row['Pozisyon']."','team');modalsec('teamduzen') id = 'duzenleteam' name='duzenlet'value='".$row['id']."' style='width:100%; height:30px;' class='btn btn-info' >Düzenle</button>
                     </div></div>
                </div>";
                
@@ -622,8 +612,8 @@
                      move_uploaded_file($tmpname, $path);
                     
                     if(isset($_POST['teamduzen'])){
-                     //UPDATE işlemi
-
+                     $conn->prepare("UPDATE team SET isim = ? ,soyisim = ?,Pozisyon = ?,images = ? WHERE id = ?")->execute([$isim,$soy,$pozisyon,$yeniresim,$_POST['hiddenteam']]);
+                         echo "<script>alert('Güncelleme Başarılı')</script>";
                     }
                     else{
                          $conn->prepare("INSERT INTO team (isim,soyisim,Pozisyon,images) VALUES(?,?,?,?)")->execute([$isim,$soy,$pozisyon,$yeniresim]);
@@ -668,7 +658,8 @@
                               <div class="row" style="margin-top:10px;">
                                    <div class="col-md-6">
                                         <input type="text" placeholder='Pozisyon' id='poz' class="form-control" name="pozisyon" required>
-                                        
+                                        <input type="hidden" name="hiddenteam" id="hiddenteam"/>
+
                                    </div>
 
                                    <div class="col-md-6">
@@ -806,7 +797,7 @@
 
                                    <div class="col-md-6">
                                    <input type="text" placeholder='Unvan' id='goruspoz' class="form-control" name="pozgorus" required>
-                                   
+                                   <input type="hidden" name="hiddenvalue" id="hiddenvalue"/>
                                    </div>
                               </div>
                               
@@ -874,7 +865,7 @@
                                    <p>".$yorum."</p>
                                    <div class='tst-rating'>
                                    
-                                   <input type=\"hidden\" name=\"yorumlar\" value='".$row['count']."' id=\"yorumlar\"/>
+                                   <input type=\"hidden\" name=\"yorumlar\" value='".$row['counts']."' id=\"yorumlar\"/>
                                    
                                    ";
                                    
@@ -884,8 +875,8 @@
                               ";
                             }
                             echo "<br>
-                            <button class='btn btn-danger'>SİL</button>
-                                   <button  type ='button' onclick =modalsec(\"testduzenle\") class='btn btn-info' data-toggle='modal' data-target='#modalgorus' >Düzenle</button>
+                            <button class='btn btn-danger' name='testsil'>SİL</button>
+                                   <button  type ='button' onclick =modalsec(\"testduzenle\") id = 'duzenlemodalsec' value = '".$row['counts']."'class='btn btn-info' data-toggle='modal' data-target='#modalgorus' >Düzenle</button>
                                    
                                    
                             </div>
@@ -900,29 +891,24 @@
 
 
 
-                         if (isset($_POST['slidersil'])){
-                              $sliderid = $_POST['sliderid'];
-                              echo "<alert>".$sliderid."</alert>";
-                             // $conn->prepare("DELETE FROM slider WHERE sliderid = ? ")->execute([$sliderid]);
-                         }
-                         else if (isset($_POST['sliderekle'])){
-
-                         }
-                         else if (isset($_POST['sliderduzen'])){
-                              $sliderid = $_POST['sliderid'];
-                         }
+                         
                          ?>
                          <?php 
+
+                    if (isset($_POST['testsil'])){
+                         $conn->prepare("DELETE FROM testimonials WHERE counts = ?")->execute([$_POST['yorumlar']]);
+                    }
+
                     if (isset($_POST['pozgorus'])){
                     $fileName = $_FILES["myimage"]["name"]; 
                     $tmpname = $_FILES["myimage"]["tmp_name"]; 
                     $filesize = $_FILES["myimage"]["size"]; 
                     
-                  $image_ex = pathinfo($fileName, PATHINFO_EXTENSION);
-                  $allowTypes = array('jpg','png','jpeg','gif');
-                  $imageExtension = explode('.',$fileName);
-                  $imageExtension = strtolower(end($imageExtension)); 
-          
+                    $image_ex = pathinfo($fileName, PATHINFO_EXTENSION);
+                    $allowTypes = array('jpg','png','jpeg','gif');
+                    $imageExtension = explode('.',$fileName);
+                    $imageExtension = strtolower(end($imageExtension)); 
+               
                   if(!in_array($imageExtension, $allowTypes)){ 
                       echo "hata";
                                        
@@ -943,11 +929,9 @@
                      move_uploaded_file($tmpname, $path);
                     
                     if(isset($_POST["testduzenle"])){
-                     //UPDATE işlemi
-                         echo "<script>alert('duzeniçi')</script>";
+                     $conn->prepare("UPDATE  testimonials SET names = ? ,title = ? ,images = ?, comment = ?, star = ? WHERE counts = ?")->execute([$isim,$pozisyon,$yeniresim,$yorumlar,$degerlendirme,$_POST['hiddenvalue']]);
                     }
                     else if (isset($_POST['testekle'])){
-                         echo "<script>alert('ekleiç')</script>";
 
                          $conn->prepare("INSERT INTO testimonials (names,title,images,comment,star) VALUES(?,?,?,?,?)")->execute([$isim,$pozisyon,$yeniresim,$yorumlar,$degerlendirme]);
                     }
@@ -992,7 +976,6 @@
           }
           
           function clearForm(){
-               alert("clear");
                document.getElementById("contact-form").reset();
                
                document.getElementsByName("tmodal").reset();
@@ -1017,17 +1000,18 @@
                if (modal == "teamduzen" || modal=="ekleteam"){
                     
                     document.getElementById('teambut').name = modal;
-                    
+                    document.getElementById('hiddenteam').value = document.getElementById("duzenleteam").value;
+
                }
                if (modal =="testekle" || modal =="testduzenle"){
                     document.getElementById('gorusbut').name = modal;
+                    document.getElementById('hiddenvalue').value = document.getElementById("duzenlemodalsec").value;
                }
                     
                
                
           }
           function teammodals(isim,soyisim,poz,type){
-               alert(isim);
                if  (type =="team"){
                     document.getElementById('isim').value = isim;
                     document.getElementById('soyisim').value = soyisim;
