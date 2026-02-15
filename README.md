@@ -1,6 +1,6 @@
-# Car Rental System - Laravel 11
+# Car Rental System
 
-Modern car rental management system built with Laravel 11, featuring multi-language support, real-time currency conversion, and comprehensive vehicle management.
+Modern car rental management system built with **Vanilla PHP**, featuring multi-language support, real-time currency conversion, and comprehensive vehicle management.
 
 ## Features
 
@@ -12,9 +12,10 @@ Modern car rental management system built with Laravel 11, featuring multi-langu
 - 📧 **Contact Forms** - Customer inquiry management
 - 🎨 **Modern UI** - Clean, responsive design with green theme
 ![Project](gitimages/Screenshot%202025-10-26%20040323.png)
+
 ## Tech Stack
 
-- **Framework:** Laravel 11
+- **Backend:** Vanilla PHP
 - **Database:** MySQL 8.4
 - **Cache:** Redis 7
 - **Frontend:** Bootstrap 3, jQuery, Owl Carousel
@@ -31,7 +32,7 @@ Modern car rental management system built with Laravel 11, featuring multi-langu
 1. **Clone the repository**
    ```bash
    git clone <your-repo-url>
-   cd car-rental-laravel
+   cd car-rental
    ```
 
 2. **Copy environment file**
@@ -70,7 +71,7 @@ After seeding, you can login with:
 ## Project Structure
 
 ```
-car-rental-laravel/
+car-rental/
 ├── app/
 │   ├── Http/Controllers/     # Controllers
 │   ├── Models/               # Eloquent models
@@ -92,10 +93,7 @@ car-rental-laravel/
 docker-compose exec app php artisan <command>
 ```
 
-### Viewing Logs
-```bash
-docker-compose exec app tail -f storage/logs/laravel.log
-```
+
 
 ### Database Access
 ```bash
